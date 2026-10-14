@@ -270,6 +270,9 @@ class _SliverTuckedRender extends SingleChildRenderObjectWidget {
 /// )
 /// ```
 class TuckController extends ChangeNotifier {
+  /// Creates a controller that isn't attached to a [SliverTucked] yet.
+  TuckController();
+
   _SliverTuckedState? _state;
 
   /// Whether a [SliverTucked] that has been laid out is using this
