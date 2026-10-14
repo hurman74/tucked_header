@@ -30,3 +30,12 @@ jobs:
       - run: flutter test
       - run: flutter test
         working-directory: example
+      - name: Summarize failure
+        if: failure()
+        run: |
+          echo "Error: failed on Flutter ${{ matrix.flutter-version }}"
+          dart format --output=none --set-exit-if-changed . 2>&1 | grep Changed | sed 's/^/Error: format: /' || true
+          flutter test -r expanded 2>&1 | grep -E 'EXCEPTION|\[E\]|timed out|Test failed|^(The|A|Expected|Actual)' | head -15 | sed 's/^/Error: test: /' || true
+          cd example
+          flutter test -r expanded 2>&1 | grep -E 'EXCEPTION|\[E\]|timed out|Test failed|^(The|A|Expected|Actual)' | head -10 | sed 's/^/Error: example: /' || true
+          exit 1
