@@ -1,9 +1,15 @@
 name: tucked_header
 description: >-
-  Start a sliver header collapsed or hidden above the fold, even when its height is only known after layout. Keeps content steady when it resizes, with snapping and a reveal/tuck controller.
+  Start a sliver header hidden or collapsed above the fold, measured during layout, so no height guess. Keeps content steady on resize; snap and controller.
 version: 0.1.0
 repository: https://github.com/hurman74/tucked_header
 issue_tracker: https://github.com/hurman74/tucked_header/issues
+
+screenshots:
+  - description: A search field tucked above an inbox, revealed by pulling down or by a button.
+    path: doc/demo.gif
+  - description: A guessed initialScrollOffset leaves part of the header showing; SliverTucked measures it.
+    path: doc/comparison.png
 
 topics:
   - sliver
